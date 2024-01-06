@@ -1,0 +1,15 @@
+# Files
+*.txt
+*.exe
+*.md5
+*.tar
+*.lz4
+*.img
+*.cpio
+samfirm
+magiskboot
+
+# Folders
+.idea
+cmake-build-debug
+Magisk
