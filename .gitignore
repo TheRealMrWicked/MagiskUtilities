@@ -11,5 +11,4 @@ magiskboot
 
 # Folders
 .idea
-cmake-build-debug
-Magisk
+Release

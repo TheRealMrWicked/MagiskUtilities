@@ -1,12 +1,14 @@
 #include <stdio.h>  // Input/Output Stream
 #include <stdbool.h> // Adds the boolean data type
 #include <stdlib.h> // Running system commands
+#include <string.h> // Manipulating Strings
+#include <dirent.h> // Reading Directory's
 #include "utilities.h"
 
 // Utility Functions
 void help() {
     printf("MagiskUtils 1.0\n");
-    printf("Copyright (C) 2023 MrWicked <mrwicked@duck.com>\n");
+    printf("Copyright (C) 2024 MrWicked <mrwicked@duck.com>\n");
     printf("\n");
     printf("Options:\n");
     printf("-r, --root                Roots a boot image, file must be given as an argument.\n");
@@ -47,7 +49,7 @@ char* decompress(char file[]){
         char command[40] = "magiskboot decompress ";
         strcat(command, file);
         runcommand(command);
-        char* filename = rmvfileext(file);
+        char* filename = removefileextension(file);
         return filename;
     } else if (strcmp(extension, "img") == 0){
         return file;
@@ -61,7 +63,7 @@ void existcheck(int argc, char* argv){
     if (argc < 3) {
         printf("Please supply a .img or .lz4 file.");
         exit(1);
-    } else if (filexists(argv) == 1) {
+    } else if (filexists(argv) == 0) {
         printf("That file does not exist");
         exit(1);
     }
@@ -366,7 +368,7 @@ int samsungdownload() {
     }
 
     char *serialnum = commandoutput("adb get-serialno");
-    char *firstapi = commandoutput("adb shell getprop ro.product.first_api_level");
+    int firstapi = strtol(commandoutput("adb shell getprop ro.product.first_api_level"), NULL, 10);
 
     char command[100];
     strcat(command, "Tools");
@@ -377,39 +379,38 @@ int samsungdownload() {
     strcat(command, region);
     strcat(command, " -i ");
     strcat(command, serialnum);
-    printf("%s", command);
 
     system(command);
     wildcardrename("SM*", "Firmware");
 
-    free(model); free(region); free(serialnum); free(firstapi);
-    return 0;
+    free(model); free(region); free(serialnum);
+    return firstapi;
 }
 
 void samsungroot() {
     char* file;
 
     removefolder("temp");
-    samsungdownload();
+    int firstapi = samsungdownload();
     wildcardrename("SM*", "Firmware");
 
     system("tar -xf Firmware/AP.tar boot.img.lz4 init_boot.img.lz4");
 
-    if (filexists("boot.img.lz4") == 0) {
+    if (filexists("boot.img.lz4") == 1) {
         file = decompress("boot.img.lz4");
         adbroot(file);
         remove("boot.img");
         rename("patched-boot.img", "boot.img");
     }
 
-    if (filexists("init_boot.img.lz4") == 0) {
+    if (filexists("init_boot.img.lz4") == 1) {
         file = decompress("init_boot.img.lz4");
         adbroot(file);
         remove("init_boot.img");
         rename("patched-boot.img", "init_boot.img");
     }
 
-    if (filexists("boot.img.lz4") == 0) {
+    if (filexists("recovery.img.lz4") == 1 && firstapi >= 29) {
         file = decompress("recovery.img.lz4");
         patchrecovery(file);
         remove("recovery.img");
@@ -423,7 +424,7 @@ void samsungroot() {
     remove("recovery.img");
 }
 
-int main(int argc, char**argv) {
+int main(int argc, char** argv) {
     char* file;
     dependencies();
 

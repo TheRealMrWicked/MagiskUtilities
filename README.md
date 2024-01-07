@@ -5,8 +5,8 @@ A program that automates various tasks related to rooting/patching Android devic
 ### Arguments
 ```
     -r,  --root               Roots a boot image, file must be given as an argument.
-    -d,  --download           Downloads the latest firmware for a connected samsung device.
-    -sr, --samsung-recovery   Patches the recovery image of a Samsung device, to enable fastbootd. NOTE: Only works with devices launched with Android 10 or higher.
+    -sd, --samsung-download   Downloads the latest firmware for a connected samsung device.
+    -pr, --patch-recovery     Patches the recovery image of a Samsung device, to enable fastbootd. NOTE: Only works with devices launched with Android 10 or higher.
     -sr, --samsung-root       Downloads the latest firmware for a connected samsung device, patches the recovery and roots the boot image.
     -h,  --help               Displays this help message.
     -v,  --version            Displays the version information.
@@ -19,9 +19,13 @@ Root:
 ```
 Download:
 ```
-./magiskutils -d
+./magiskutils -sd
 ```
-Download:
+Patch Recovery:
+```
+./magiskutils -pr recovery.img
+```
+Auto Root:
 ```
 ./magiskutils -sr
 ```
@@ -29,7 +33,7 @@ Download:
 ### Additional Scripts
 
 There are also shell scripts that can be used to patch boot images, without needing to use the main program,
-made for [Windows](https://github.com/TheRealMrWicked/MagiskUtilities/blob/master/boot_patch.bat) and [Linux](https://github.com/TheRealMrWicked/MagiskUtilities/blob/master/boot_patch.sh).
+made for [Windows](https://github.com/TheRealMrWicked/MagiskUtilities/blob/master/scripts/boot_patch.bat) and [Linux](https://github.com/TheRealMrWicked/MagiskUtilities/blob/master/scripts/boot_patch.sh).
 
 Its usage is simply: ./boot_patch <boot.img> [-sar]
 
