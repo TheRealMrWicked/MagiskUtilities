@@ -83,7 +83,7 @@ else
   STATUS=0
 fi
 
-if [ "$STATUS" == 0 ]; then
+if [ "$STATUS" == 0 ] || [ "$STATUS" -ge 3 ]; then
   SHA1=$(./magiskboot sha1 "$BOOTIMAGE" 2>/dev/null)
 else
   echo "Unsupported boot image detected."

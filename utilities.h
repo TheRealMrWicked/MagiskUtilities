@@ -1,15 +1,25 @@
 char* os();
 
-char* commandoutput(char command[]);
+// Command Manipulation
 
-bool filexists(char filename[]);
+char* commandOutput(char *command);
 
-void wildcardrename(char oldname[], char newname[]);
+int supressOutput (char *command);
 
-char* getextension(char filename[]);
+// File Manipulation
 
-char* removefileextension(char filename[]);
+bool fileExists(char *fileName);
 
-void removefolder(char path[]);
+void wildcardRename(char *oldName, char *newName);
 
-void copyfolder(char srcfolder[], char dstfolder[]);
+char* getExtension(char *fileName);
+
+char* removeFileExtension(char *fileName);
+
+void copyFile(char *sourceFile, char *destinationFile);
+
+// Folder Manipulation
+
+void removeFolder(char *folder);
+
+void copyFolder(char *sourceFolder, char *destinationFolder);

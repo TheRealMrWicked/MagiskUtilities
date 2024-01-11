@@ -4,12 +4,19 @@ A program that automates various tasks related to rooting/patching Android devic
 ## Usage
 ### Arguments
 ```
-    -r,  --root               Roots a boot image, file must be given as an argument.
-    -sd, --samsung-download   Downloads the latest firmware for a connected samsung device.
-    -pr, --patch-recovery     Patches the recovery image of a Samsung device, to enable fastbootd. NOTE: Only works with devices launched with Android 10 or higher.
-    -sr, --samsung-root       Downloads the latest firmware for a connected samsung device, patches the recovery and roots the boot image.
-    -h,  --help               Displays this help message.
-    -v,  --version            Displays the version information.
+-r,  --root               Roots a boot image, a file must be given as an argument.
+
+-sd, --samsung-download   Downloads the latest firmware for a connected samsung device.
+
+-sr, --samsung-root       Downloads the latest firmware for a connected samsung device,
+                          patches the recovery and roots the boot image.
+
+-pr, --patch-recovery     Patches the recovery image of a Samsung device, to enable fastbootd.
+                          NOTE: Only works with devices launched with Android 10 or higher.
+
+-h,  --help               Displays this help message.
+
+-v,  --version            Displays the version information.
 ```
 
 ### Examples
@@ -17,17 +24,17 @@ Root:
 ```
 ./magiskutils -r boot.img
 ```
-Download:
+Samsung Download:
 ```
 ./magiskutils -sd
+```
+Samsung Auto-Root:
+```
+./magiskutils -sr
 ```
 Patch Recovery:
 ```
 ./magiskutils -pr recovery.img
-```
-Auto Root:
-```
-./magiskutils -sr
 ```
 
 ### Additional Scripts

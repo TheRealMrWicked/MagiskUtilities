@@ -30,7 +30,7 @@ if [%BOOTIMAGE%] == [] (
   echo Copyright ^(C^) 2024 MrWicked ^<mrwicked@duck.com^>
   echo.
   echo Please supply a boot image to patch.
-  echo Usage: $0 ^<boot.img^> [-sar]
+  echo Usage: %0 ^<boot.img^> [-sar]
   echo.
   echo Options:
   echo -sar     Use if the device is LegacySAR.
