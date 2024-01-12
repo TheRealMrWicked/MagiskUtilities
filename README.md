@@ -40,7 +40,7 @@ Patch Recovery:
 ### Additional Scripts
 
 There are also shell scripts that can be used to patch boot images, without needing to use the main program,
-made for [Windows](https://github.com/TheRealMrWicked/MagiskUtilities/blob/master/scripts/boot_patch.bat) and [Linux](https://github.com/TheRealMrWicked/MagiskUtilities/blob/master/scripts/boot_patch.sh).
+made for [Windows](https://github.com/TheRealMrWicked/MagiskUtilities/blob/master/boot_patch.bat) and [Linux](https://github.com/TheRealMrWicked/MagiskUtilities/blob/master/boot_patch.sh).
 
 Its usage is simply: ./boot_patch <boot.img> [-sar]
 

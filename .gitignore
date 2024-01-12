@@ -1,15 +1,8 @@
-# Files
-*.txt
-*.exe
-*.md5
-*.tar
-*.lz4
-*.img
-*.cpio
-samfirm
-magiskboot
+# Ignore All Files and Folders
+*
 
-# Folders
-.idea
-Release
-Include
+# Do Not Ignore
+!*.c
+!*.h
+!*.bat
+!*.sh

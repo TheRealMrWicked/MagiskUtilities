@@ -1,8 +1,7 @@
 #include <stdio.h>  // Input/Output Stream
-#include <stdbool.h> // Adds the boolean data type
-#include <stdlib.h> // Running system commands
-#include <dirent.h> // Reading Directory's
-#include "utilities.h" // MrWicked's Library
+#include <stdlib.h> // System Commands, Malloc, etc
+#include <dirent.h> // Reading Directories
+#include "utilities.h" // MrWicked's Utility Library
 
 // Utility Functions
 
